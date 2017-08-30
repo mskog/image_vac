@@ -27,11 +27,7 @@ defmodule ImageVacWeb.ConnCase do
   end
 
 
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ImageVac.Repo)
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ImageVac.Repo, {:shared, self()})
-    end
+  setup _tags do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 

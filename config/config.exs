@@ -6,8 +6,6 @@
 use Mix.Config
 
 # General application configuration
-config :image_vac,
-  ecto_repos: [ImageVac.Repo]
 
 # Configures the endpoint
 config :image_vac, ImageVacWeb.Endpoint,
