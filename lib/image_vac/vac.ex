@@ -3,16 +3,16 @@ defmodule ImageVac.Vac do
   import Ecto.Changeset
   alias ImageVac.Vac
 
-
   schema "vacs" do
     field :hash_id, :string
+    field :url, :string
     timestamps()
   end
 
   @doc false
-  def changeset(%Vac{} = vac, attrs) do
+  def changeset(%Vac{} = vac, attrs \\ %{}) do
     vac
     |> cast(attrs, [:url])
-    |> validate_required([])
+    |> validate_required([:url])
   end
 end
