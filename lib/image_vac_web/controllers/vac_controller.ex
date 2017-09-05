@@ -14,16 +14,17 @@ defmodule ImageVacWeb.VacController do
 
     case Repo.insert(changeset) do
       {:ok, vac} ->
+        changes = Ecto.Changeset.change vac, hash_id: ImageVac.Hashes.encode(vac.id)
+        {:ok, vac} = Repo.update(changes)
         conn
-        |> put_flash(:info, "Topic created")
-        |> redirect(to: vac_path(conn, :show, vac.id))
+        |> redirect(to: vac_path(conn, :show, vac.hash_id))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset
     end
   end
 
-  def show(conn, %{"id" => vac_id}) do
-    vac = Repo.get!(Vac, vac_id)
+  def show(conn, %{"id" => hash_id}) do
+    vac = Repo.get_by!(Vac, hash_id: hash_id)
     url = "https://zucker.mskog.com/images?url=#{vac.url}"
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, [], recv_timeout: 20000)
 
