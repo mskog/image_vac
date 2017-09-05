@@ -13,4 +13,5 @@ jobs:
       - run: mix local.rebar --force
       - run: mix deps.get
       - run: mix ecto.create
+      - run: mix ecto.migrate
       - run: mix test

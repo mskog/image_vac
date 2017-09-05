@@ -12,7 +12,7 @@ defmodule ImageVac.Vac do
   @doc false
   def changeset(%Vac{} = vac, attrs) do
     vac
-    |> cast(attrs, [])
+    |> cast(attrs, [:url])
     |> validate_required([])
   end
 end
