@@ -5,9 +5,9 @@ defmodule Discuss.VacControllerTest do
     test "Gives 200 ok" do
 
       response = build_conn()
-      |> get(vac_path(build_conn(), :index))
+      |> get(vac_path(build_conn(), :index, url: "http://www.example.com"))
 
-      assert html_response(response, 200) =~ "Vacs"
+      assert html_response(response, 200)
     end
   end
 end

@@ -41,7 +41,8 @@ defmodule ImageVac.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      {:httpoison, "~> 0.13"}
     ]
   end
 
