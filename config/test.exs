@@ -8,3 +8,12 @@ config :image_vac, ImageVacWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Configure your database
+config :image_vac, ImageVac.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "image_vac_test",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox
