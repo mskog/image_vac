@@ -2,7 +2,7 @@ defmodule ImageVacWeb.VacController do
   use ImageVacWeb, :controller
 
   def index(conn, params) do
-    url = "http://zucker.mskog.com/images?url=#{params["url"]}"
+    url = "https://zucker.mskog.com/images?url=#{params["url"]}"
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, [], recv_timeout: 10000)
 
     images = Poison.decode!(body)
