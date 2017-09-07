@@ -1,5 +1,6 @@
 defmodule ImageVacWeb.UserSocket do
   use Phoenix.Socket
+  use Drab.Socket
 
   ## Channels
   # channel "room:*", ImageVacWeb.RoomChannel

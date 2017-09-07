@@ -37,7 +37,8 @@ config :image_vac, ImageVacWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/image_vac_web/views/.*(ex)$},
-      ~r{lib/image_vac_web/templates/.*(eex)$}
+      ~r{lib/image_vac_web/templates/.*(eex)$},
+      ~r{web/templates/.*(eex|drab)$}
     ]
   ]
 

@@ -1,3 +1,0 @@
-<%= for image <- @images do %>
-  <img src="<%=image%>" />
-<% end %>

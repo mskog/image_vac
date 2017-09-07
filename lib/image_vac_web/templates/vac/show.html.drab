@@ -1,0 +1,7 @@
+<%= for image <- @images do %>
+  <img src="<%=image%>" />
+<% end %>
+
+<%= @vac.url %>
+
+<button drab-click="fetch_images">Load images</button>
