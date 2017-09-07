@@ -9,7 +9,8 @@ use Mix.Config
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
 config :image_vac, ImageVacWeb.Endpoint,
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  url: [host: System.get_env("HOSTNAME")]
 
 # Configure your database
 config :image_vac, ImageVac.Repo,
