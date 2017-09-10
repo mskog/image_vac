@@ -1,3 +1,7 @@
-<%= for image <- @images do %>
-  <img src="<%=image%>" />
-<% end %>
+<input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />
+
+<div id ="images">
+  <%= for image <- @images do %>
+    <img src="<%=image%>" />
+  <% end %>
+</div>

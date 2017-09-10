@@ -2,7 +2,7 @@ defmodule ImageVacWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", ImageVacWeb.RoomChannel
+  channel "vac:*", ImageVacWeb.VacChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
