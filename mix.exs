@@ -43,8 +43,7 @@ defmodule ImageVac.Mixfile do
       {:cowboy, "~> 1.0"},
       {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
       {:httpoison, "~> 0.13"},
-      {:hashids, "~> 2.0"},
-      {:drab, "~> 0.5"}
+      {:hashids, "~> 2.0"}
     ]
   end
 
