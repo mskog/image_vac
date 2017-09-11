@@ -4,6 +4,7 @@ defmodule ImageVac.Vac do
   alias ImageVac.Vac
 
   schema "vacs" do
+    has_many :images, ImageVac.Image
     field :hash_id, :string
     field :url, :string
     timestamps()

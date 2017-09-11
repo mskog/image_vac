@@ -1,7 +1,18 @@
+<h1><%= @vac.url %></h1>
+
 <input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />
 
-<div id ="images">
-  <%= for image <- @images do %>
-    <img src="<%=image%>" />
+<div id="new_images">
+  <h3>New Images</h3>
+  <div id="new_images_list">
+    Loading new images...
+  </div>
+</div>
+
+<hr />
+
+<div id="images">
+  <%= for image <- @vac.images do %>
+    <img src="<%=image.url%>" />
   <% end %>
 </div>

@@ -24,15 +24,18 @@ defmodule ImageVacWeb.VacController do
   end
 
   def show(conn, %{"id" => hash_id}) do
-    vac = Repo.get_by!(Vac, hash_id: hash_id)
+    vac = Repo.get_by!(Vac, hash_id: hash_id) |> Repo.preload(:images)
     url = "https://zucker.mskog.com/images?url=#{vac.url}"
+
     Task.async fn ->
-      images = ImageVac.Images.fetch(url)
-      ImageVacWeb.Endpoint.broadcast "vac:images:#{vac.hash_id}", "new_images", %{images: images}
+      new_images = ImageVac.Images.fetch(url)
+      |> ImageVac.Images.remove_duplicate_urls(vac.images)
+      |> Enum.take(10)
+      |> ImageVac.Images.persist_images(vac)
+      |> Enum.map(fn image -> image.url end)
+      ImageVacWeb.Endpoint.broadcast "vac:images:#{vac.hash_id}", "new_images", %{images: new_images}
     end
 
-    images = []
-
-    render conn, "show.html", images: images, vac: vac
+    render conn, "show.html", vac: vac
   end
 end

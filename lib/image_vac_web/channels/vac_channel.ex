@@ -9,12 +9,4 @@ defmodule ImageVacWeb.VacChannel do
   def join("vac:" <> _private_room_id, _params, _socket) do
     {:error, %{reason: "unauthorized"}}
   end
-
-  def handle_out("new_images", msg, socket) do
-    IO.inspect(socket)
-    IO.inspect msg
-    IO.inspect "handled"
-    push socket, "new_image", msg
-    {:noreply, socket}
-  end
 end
