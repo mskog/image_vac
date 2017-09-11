@@ -27,12 +27,7 @@ defmodule ImageVacWeb.VacController do
     vac = Repo.get_by!(Vac, hash_id: hash_id)
     url = "https://zucker.mskog.com/images?url=#{vac.url}"
     Task.async fn ->
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, [], recv_timeout: 20000)
-
-      images = Poison.decode!(body)
-      |> Enum.take(10)
-      |> Enum.map(&ImageVac.Thumbs.image_url/1)
-
+      images = ImageVac.Images.fetch(url)
       ImageVacWeb.Endpoint.broadcast "vac:images:#{vac.hash_id}", "new_images", %{images: images}
     end
 
