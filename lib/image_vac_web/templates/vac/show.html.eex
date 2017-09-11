@@ -12,7 +12,7 @@
 <hr />
 
 <div id="images">
-  <%= for image <- @vac.images do %>
-    <img src="<%=image.url%>" />
+  <%= for image_url <- @image_urls do %>
+    <img src="<%= image_url %>" />
   <% end %>
 </div>

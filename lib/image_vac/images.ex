@@ -3,7 +3,6 @@ defmodule ImageVac.Images do
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, [], recv_timeout: 20000)
 
     Poison.decode!(body)
-    |> Enum.map(&ImageVac.Thumbs.image_url/1)
   end
 
   def persist_images(image_urls, vac) do
