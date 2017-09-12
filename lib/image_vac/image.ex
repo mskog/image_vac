@@ -6,6 +6,9 @@ defmodule ImageVac.Image do
   schema "images" do
     belongs_to :vac, ImageVac.Vac
     field :url, :string
+    field :height, :integer
+    field :width, :integer
+    field :type, :string
     timestamps()
   end
 
