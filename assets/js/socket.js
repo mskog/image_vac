@@ -23,7 +23,7 @@ channel.on("new_images", payload => {
   payload['images'].forEach(image => {
     let imageElement = document.createElement("img");
     imageElement.src = image;
-    $("#new_images_list").append(imageElement);
+    $("#masonry").prepend(imageElement);
   });
 })
 

@@ -12,8 +12,9 @@
 
 <hr />
 
-<div id="images">
-  <%= for image_url <- @image_urls do %>
-    <img src="<%= image_url %>" />
-  <% end %>
+  <div id="masonry">
+    <%= for image_url <- @image_urls do %>
+      <img src="<%= image_url %>" />
+    <% end %>
+  </div>
 </div>
