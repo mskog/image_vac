@@ -1,7 +1,11 @@
 <%= form_for @changeset, vac_path(@conn, :create), fn f -> %>
-  <label>
-    URL: <%= text_input f, :url %>
-  </label>
+  <div class="field">
+    <label class="label">URL</label>
+    <div class="control">
+      <%= text_input f, :url, class: "input is-focused is-meidum", placeholder: "Input URL" %>
+    </div>
+    </label>
+  </div>
 
-  <%= submit "Submit" %>
+  <%= submit "Submit", class: "button is-primary" %>
 <% end %>
