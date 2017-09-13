@@ -5,8 +5,8 @@
 
 <div id="new_images">
   <h3>New Images</h3>
+  <span id="new_images_message">Loading new images...</span>
   <div id="new_images_list">
-    Loading new images...
   </div>
 </div>
 

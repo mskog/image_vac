@@ -7,12 +7,12 @@ defmodule ImageVac.Images do
 
   def persist_images(image_urls, vac) do
     Enum.map image_urls, fn image_url ->
-      case HTTPoison.get("https://zucker.mskog.com/imageproperties?url=#{image_url}", [], recv_timeout: 30000) do
+      {:ok, image} = case HTTPoison.get("https://zucker.mskog.com/imageproperties?url=#{image_url}", [], recv_timeout: 30000) do
         {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
           %{"height" => height, "width" => width, "type" => type} = Poison.decode!(body)
-          {:ok, image} = ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id, height: height, width: width, type: type})
+          ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id, height: height, width: width, type: type})
         {:ok, %HTTPoison.Response{status_code: _, body: _}} ->
-          {:ok, image} = ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
+          ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
       end
 
       broadcast_new_images(vac, [image])
