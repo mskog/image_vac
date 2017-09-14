@@ -9,8 +9,12 @@ defmodule ImageVac.Images do
     Enum.map image_urls, fn image_url ->
       {:ok, image} = case HTTPoison.get("https://zucker.mskog.com/imageproperties?url=#{image_url}", [], recv_timeout: 30000) do
         {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-          %{"height" => height, "width" => width, "type" => type} = Poison.decode!(body)
-          ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id, height: height, width: width, type: type})
+          case Poison.decode!(body) do
+            %{"height" => height, "width" => width, "type" => type} ->
+              ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id, height: height, width: width, type: type})
+            _ ->
+              ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
+          end
         {:ok, %HTTPoison.Response{status_code: _, body: _}} ->
           ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
       end
@@ -26,7 +30,7 @@ defmodule ImageVac.Images do
 
   def filter_too_small(images) do
     Enum.reject images, fn image ->
-      image.width < 300
+      image.width != nil && image.width < 300
     end
   end
 
