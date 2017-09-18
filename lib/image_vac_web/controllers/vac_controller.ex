@@ -27,7 +27,7 @@ defmodule ImageVacWeb.VacController do
     vac = Repo.get_by!(Vac, hash_id: hash_id) |> Repo.preload(:images)
 
     image_urls = ImageVac.Images.filter_too_small(vac.images)
-    |> Enum.map(fn image -> ImageVac.Thumbs.image_url(image.url) end)
+    |> ImageVac.Images.image_urls
 
     Task.async fn ->
       ImageVac.Images.fetch_and_persist(vac.url, vac)

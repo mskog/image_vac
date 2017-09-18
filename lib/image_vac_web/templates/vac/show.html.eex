@@ -14,7 +14,9 @@
 
   <div id="masonry">
     <%= for image_url <- @image_urls do %>
-      <img src="<%= image_url %>" />
+      <a href="<%= image_url.url %>" target="_blank">
+        <img src="<%= image_url.thumbnail_url %>" />
+      </a>
     <% end %>
   </div>
 </div>

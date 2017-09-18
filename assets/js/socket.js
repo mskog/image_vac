@@ -21,9 +21,13 @@ channel.join()
 channel.on("new_images", payload => {
   $("#new_images_message").empty();
   payload['images'].forEach(image => {
+    let aElement = document.createElement("a");
+    aElement.href = image.url;
+    aElement.target = "_blank"
     let imageElement = document.createElement("img");
-    imageElement.src = image;
-    $("#masonry").prepend(imageElement);
+    imageElement.src = image.thumbnail_url;
+    aElement.appendChild(imageElement)
+    $("#masonry").prepend(aElement);
   });
 })
 
