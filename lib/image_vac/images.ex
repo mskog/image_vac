@@ -1,6 +1,19 @@
 defmodule ImageVac.Images do
+  def fetch_and_persist(url, vac) do
+    images = fetch(url)
+    |> remove_duplicate_urls(vac.images)
+    Enum.chunk_every(images, round(Enum.count(images)/4))
+    |> Enum.each fn images_chunk ->
+      Task.async fn ->
+        persist_images(images_chunk, vac)
+      end
+    end
+  end
+
   def fetch(url) do
-    {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, [], recv_timeout: 30000)
+    zucker_url = "https://zucker.mskog.com/images?url=#{url}"
+    {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(zucker_url, [], recv_timeout: 30000)
+    IO.inspect(body)
 
     Poison.decode!(body)
   end
