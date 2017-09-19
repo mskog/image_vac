@@ -10,7 +10,9 @@ defmodule ImageVacWeb.VacController do
   end
 
   def create(conn, %{"vac" => vac}) do
-    changeset = Vac.changeset(%Vac{}, vac)
+    {:ok, url} = Map.fetch(vac, "url")
+    attributes = %{url: ImageVac.Helpers.Url.build_url(url)}
+    changeset = Vac.changeset(%Vac{}, attributes)
 
     case Repo.insert(changeset) do
       {:ok, vac} ->
