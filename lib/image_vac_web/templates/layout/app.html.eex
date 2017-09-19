@@ -27,9 +27,11 @@
       </div>
     </div> -->
 
-    <div class="section">
-      <div class="container content">
-        <%= render @view_module, @view_template, assigns %>
+    <div class="section hero">
+      <div class="hero-body">
+        <div class="container content">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
       </div>
     </div>
 

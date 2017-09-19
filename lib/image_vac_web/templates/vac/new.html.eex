@@ -1,8 +1,11 @@
 <%= form_for @changeset, vac_path(@conn, :create), fn f -> %>
   <div class="field">
-    <label class="label">URL</label>
+    <%= label f, :url, class: "label"%>
     <div class="control">
-      <%= text_input f, :url, class: "input is-focused is-meidum", placeholder: "Input URL" %>
+      <%= text_input f, :url, class: "input is-focused is-medium", placeholder: "Input URL" %>
+      <div class="help is-danger">
+        <%= error_tag f, :url %>
+      </div>
     </div>
     </label>
   </div>

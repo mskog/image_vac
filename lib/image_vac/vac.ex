@@ -15,5 +15,24 @@ defmodule ImageVac.Vac do
     vac
     |> cast(attrs, [:url])
     |> validate_required([:url])
+    |> validate_url_format
+  end
+
+  defp validate_url_format(changeset) do
+    url = get_field(changeset, :url)
+    case validate_url(url) do
+      {:ok, _} ->
+        changeset
+      {:error, _} ->
+        add_error(changeset, :url, "invalid")
+    end
+  end
+
+  defp validate_url(url = nil) do
+    {:ok, url}
+  end
+
+  defp validate_url(url) do
+    ImageVac.Helpers.UrlValidator.valid_url(url)
   end
 end
