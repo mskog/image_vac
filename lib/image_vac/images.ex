@@ -3,11 +3,11 @@ defmodule ImageVac.Images do
     images = fetch(url)
     |> remove_duplicate_urls(vac.images)
     Enum.chunk_every(images, round(Enum.count(images)/4)+1)
-    |> Enum.each fn images_chunk ->
+    |> Enum.each(fn images_chunk ->
       Task.async fn ->
         persist_images(images_chunk, vac)
       end
-    end
+    end)
   end
 
   def fetch(url) do
