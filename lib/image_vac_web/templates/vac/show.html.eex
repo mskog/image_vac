@@ -1,22 +1,23 @@
+<div class="column is-10 is-offset-1">
+  <h1 class="title"><%= @vac.url %></h1>
+  <div class="box">
+    <input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />
 
-<h2><%= @vac.url %></h2>
+    <div id="new_images">
+      <span id="new_images_message">Loading new images...</span>
+      <div id="new_images_list">
+      </div>
+    </div>
 
-<input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />
+    <hr />
 
-<div id="new_images">
-  <h3>New Images</h3>
-  <span id="new_images_message">Loading new images...</span>
-  <div id="new_images_list">
-  </div>
-</div>
-
-<hr />
-
-  <div id="masonry">
-    <%= for image_url <- @image_urls do %>
-      <a href="<%= image_url.url %>" target="_blank">
-        <img src="<%= image_url.thumbnail_url %>" />
-      </a>
-    <% end %>
+      <div id="masonry">
+        <%= for image_url <- @image_urls do %>
+          <a href="<%= image_url.url %>" target="_blank">
+            <img src="<%= image_url.thumbnail_url %>" />
+          </a>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

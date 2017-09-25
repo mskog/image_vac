@@ -12,13 +12,13 @@
   </head>
 
   <body>
-    <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <!-- <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           Image Vac
         </a>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- <div class="section">
       <div class="container">
@@ -27,10 +27,12 @@
       </div>
     </div> -->
 
-    <div class="section hero">
+    <div class="hero is-fullheight is-dark is-bold">
       <div class="hero-body">
-        <div class="container content">
-          <%= render @view_module, @view_template, assigns %>
+        <div class="container">
+          <div class="columns is-vcentered">
+            <%= render @view_module, @view_template, assigns %>
+          </div>
         </div>
       </div>
     </div>

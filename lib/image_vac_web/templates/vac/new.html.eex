@@ -1,14 +1,25 @@
-<%= form_for @changeset, vac_path(@conn, :create), fn f -> %>
-  <div class="field">
-    <%= label f, :url, class: "label"%>
-    <div class="control">
-      <%= text_input f, :url, class: "input is-focused is-medium", placeholder: "Input URL" %>
-      <div class="help is-danger">
-        <%= error_tag f, :url %>
+<div class="column is-6 is-offset-3">
+  <h1 class="title">Download images</h1>
+  <div class="box">
+    <%= form_for @changeset, vac_path(@conn, :create), fn f -> %>
+      <div class="field">
+        <%= label f, :url, class: "label"%>
+        <div class="control">
+          <%= text_input f, :url, class: "input is-focused is-medium", placeholder: "Input URL" %>
+          <div class="help is-danger">
+            <%= error_tag f, :url %>
+          </div>
+        </div>
+        </label>
       </div>
-    </div>
-    </label>
+      <p class="control">
+        <%= submit "GO", class: "button is-primary" %>
+      </p>
+    <% end %>
   </div>
-
-  <%= submit "Submit", class: "button is-primary" %>
-<% end %>
+  <p class="has-text-centered">
+    <a href="#">Terms of service</a>
+    |
+    <a href="#">Privacy policy</a>
+  </p>
+</div>

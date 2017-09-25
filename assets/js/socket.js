@@ -27,7 +27,7 @@ channel.on("new_images", payload => {
     let imageElement = document.createElement("img");
     imageElement.src = image.thumbnail_url;
     aElement.appendChild(imageElement)
-    $("#masonry").prepend(aElement);
+    $("#masonry").append(aElement);
   });
 })
 
