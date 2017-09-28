@@ -1,4 +1,4 @@
-<div class="column is-10 is-offset-1">
+<div class="column is-12 is-offset-0">
   <h1 class="title"><%= @vac.url %></h1>
   <div class="box">
     <input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />

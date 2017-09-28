@@ -12,25 +12,15 @@
   </head>
 
   <body>
-    <!-- <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          Image Vac
-        </a>
-      </div>
-    </nav> -->
-
-    <!-- <div class="section">
-      <div class="container">
-        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      </div>
-    </div> -->
-
     <div class="hero is-fullheight is-dark is-bold">
-      <div class="hero-body">
+      <div class="hero-head">
+        <div class="column is-4 is-offset-4">
+          <a href="/">
+            <img src="images/logo.png" />
+          </a>
+        </div>
         <div class="container">
-          <div class="columns is-vcentered">
+          <div class="columns">
             <%= render @view_module, @view_template, assigns %>
           </div>
         </div>
