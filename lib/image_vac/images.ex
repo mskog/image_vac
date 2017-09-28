@@ -24,10 +24,10 @@ defmodule ImageVac.Images do
             %{"height" => height, "width" => width, "type" => type} ->
               ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id, height: height, width: width, type: type})
             _ ->
-              ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
+              # ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
           end
         {:ok, %HTTPoison.Response{status_code: _, body: _}} ->
-          ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
+          # ImageVac.Repo.insert(%ImageVac.Image{url: image_url, vac_id: vac.id})
       end
 
       broadcast_new_images(vac, [image])
@@ -41,13 +41,18 @@ defmodule ImageVac.Images do
 
   def filter_too_small(images) do
     Enum.reject images, fn image ->
-      image.width != nil && image.width < 300
+      image.width != nil && image.height < 200
     end
   end
 
   def image_urls(images) do
     Enum.map images, fn image ->
-      %ImageVac.ImageUrl{url: ImageVac.Thumbs.image_url(image.url), thumbnail_url: ImageVac.Thumbs.thumbnail_url(image.url)}
+      %ImageVac.ImageUrl{
+        url: ImageVac.Thumbs.image_url(image.url),
+        thumbnail_url: ImageVac.Thumbs.thumbnail_url(image.url),
+        thumbnail_height: image.height,
+        thumbnail_width: image.width,
+      }
     end
   end
 

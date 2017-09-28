@@ -13,9 +13,12 @@
 
       <div id="masonry">
         <%= for image_url <- @image_urls do %>
-          <a href="<%= image_url.url %>" target="_blank">
-            <img src="<%= image_url.thumbnail_url %>" />
-          </a>
+          <div style="width:<%= image_url.thumbnail_width*200/image_url.thumbnail_height%>px;flex-grow:<%=image_url.thumbnail_width*200/image_url.thumbnail_height %>">
+            <a href="<%= image_url.url %>" target="_blank">
+              <i style="padding-bottom:<%=image_url.thumbnail_height/image_url.thumbnail_width*100%>%"></i>
+              <img src="<%= image_url.thumbnail_url %>" />
+            </a>
+          </div>
         <% end %>
       </div>
     </div>
