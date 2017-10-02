@@ -18,8 +18,8 @@
     <% end %>
   </div>
   <p class="has-text-centered">
-    <a href="#">Terms of service</a>
+    <a href="<%= page_path(@conn, :tos) %>">Terms of service</a>
     |
-    <a href="#">Privacy policy</a>
+    <a href="mailto:imagevac@gmail.com">Contact us</a>
   </p>
 </div>

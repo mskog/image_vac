@@ -16,9 +16,13 @@ defmodule ImageVacWeb.Router do
   scope "/", ImageVacWeb do
     pipe_through :browser # Use the default browser stack
 
+    get "/tos", PageController, :tos
+
     resources "/", VacController, only: [:show, :new, :create]
+
     get "/", VacController, :new
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", ImageVacWeb do
