@@ -1,5 +1,5 @@
-<div class="column is-6 is-offset-3">
-  <h1 class="title">Download images</h1>
+<div class="column is-8 is-offset-2">
+  <h1 class="title is-size-4 is-size-6-mobile has-text-centered">View and Save all images from any website</h1>
   <div class="box">
     <%= form_for @changeset, vac_path(@conn, :create), fn f -> %>
       <div class="field">
