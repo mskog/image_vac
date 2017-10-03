@@ -5,7 +5,7 @@ defmodule ImageVacWeb.VacView do
     "All images from #{conn.assigns.vac.url}"
   end
 
-  def image(:show, conn) do
-    Enum.at conn.assigns.image_urls, 0
-  end
+  # def image(:show, conn) do
+  #   Enum.at(conn.assigns.image_urls, 0).thumbnail_url
+  # end
 end
