@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ImageVac</title>
+    <title>ImageVac - <%= title @conn, "View and Save all images from any website" %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <% if Mix.env == "prod" do %>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->

@@ -1,6 +1,6 @@
 defmodule ImageVac.Images do
   def fetch_and_persist(url, vac) do
-    images = fetch(url)
+    fetch(url)
     |> remove_duplicate_urls(vac.images)
     |> persist_images(vac)
   end
