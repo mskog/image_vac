@@ -6,26 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>ImageVac</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <% if Mix.env == "prod" do %>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107398119-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)};
-      gtag('js', new Date());
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107398119-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)};
+        gtag('js', new Date());
 
-      gtag('config', 'UA-107398119-1');
-    </script>
+        gtag('config', 'UA-107398119-1');
+      </script>
+    <% end %>
   </head>
 
   <body>
     <div class="hero is-fullheight is-dark is-bold">
       <div class="hero-head">
-        <div class="column is-4 is-offset-4">
+
+        <div class="column is-4 is-offset-4 is-text-centered">
           <a href="/">
-            <img src="<%= static_path(@conn, "/images/logo.png") %>" />
+            <img style="margin:auto; display:block" src="<%= static_path(@conn, "/images/logo.png") %>" />
           </a>
         </div>
         <div class="container">
