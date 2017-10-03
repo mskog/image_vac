@@ -8,4 +8,12 @@ defmodule ImageVacWeb.LayoutView do
       _ -> default
     end
   end
+
+  def image(conn, default) do
+    try do
+      apply(view_module(conn), :image, [action_name(conn), conn])
+    rescue
+      _ -> default
+    end
+  end
 end
