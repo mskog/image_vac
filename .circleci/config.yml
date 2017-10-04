@@ -22,5 +22,5 @@ jobs:
             ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git push dokku@$DEPLOY_HOST:broad master
+              git push dokku@$DEPLOY_HOST:imagevac master
             fi
