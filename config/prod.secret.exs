@@ -10,7 +10,7 @@ use Mix.Config
 # or recreate for your teammates (or yourself later on).
 config :image_vac, ImageVacWeb.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  url: [host: System.get_env("HOSTNAME")]
+  url: [host: System.get_env("HOSTNAME"), scheme: "https"]
 
 # Configure your database
 config :image_vac, ImageVac.Repo,
