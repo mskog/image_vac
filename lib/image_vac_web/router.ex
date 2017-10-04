@@ -1,5 +1,10 @@
 defmodule ImageVacWeb.Router do
   use ImageVacWeb, :router
+  use Plug.ErrorHandler
+
+  defp handle_errors(_conn, %{kind: kind, reason: reason, stack: stacktrace}) do
+    Rollbax.report(kind, reason, stacktrace)
+  end
 
   pipeline :browser do
     plug :accepts, ["html"]
