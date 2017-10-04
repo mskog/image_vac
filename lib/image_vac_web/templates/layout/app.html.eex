@@ -13,6 +13,12 @@
     <meta property="og:description" content="<%= title @conn, "View and Save all images from any website" %>" />
     <meta property="og:image" content="<%= image @conn, static_url(@conn, "/images/logo.png") %>" />
 
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@imagevac" />
+    <meta name="twitter:title" content="<%= title @conn, "View and Save all images from any website" %>" />
+    <meta name="twitter:description" content="<%= title @conn, "View and Save all images from any website" %>" />
+    <meta name="twitter:image" content="<%= image @conn, static_url(@conn, "/images/logo.png") %>" />
+
     <title>ImageVac - <%= title @conn, "View and Save all images from any website" %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <%= if Mix.env == :prod do %>
