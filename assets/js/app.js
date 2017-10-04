@@ -21,3 +21,4 @@ import "jquery"
 // paths "./socket" or full ones "web/static/js/socket".
 
 import socket from "./socket"
+var myLazyLoad = new LazyLoad();

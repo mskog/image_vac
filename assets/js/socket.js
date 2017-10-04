@@ -22,14 +22,14 @@ channel.on("new_images", payload => {
   $("#new_images_message").empty();
   payload['images'].forEach(image => {
     let divElement = document.createElement("div");
-    divElement.style = `width:${image.thumbnail_width*100/image.thumbnail_height}px;flex-grow:${image.thumbnail_width*100/image.thumbnail_height}`
+    divElement.style = `width:${image.thumbnail_width*125/image.thumbnail_height}px;flex-grow:${image.thumbnail_width*100/image.thumbnail_height}`
     let iElement = document.createElement("i");
     iElement.style = `padding-bottom:${image.thumbnail_height/image.thumbnail_width*100}%`
     let aElement = document.createElement("a");
     aElement.href = image.url;
     aElement.target = "_blank"
     let imageElement = document.createElement("img");
-    imageElement.src = image.thumbnail_url;
+    imageElement.setAttribute("src", image.thumbnail_url);
     aElement.appendChild(imageElement)
     divElement.appendChild(iElement);
     divElement.appendChild(aElement);
