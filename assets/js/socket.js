@@ -21,6 +21,15 @@ channel.join()
 channel.on("new_images", payload => {
   $("#new_images_message").empty();
   payload['images'].forEach(image => {
+
+    let formElement = document.getElementById("download_form");
+    let inputElement = document.createElement("input")
+    inputElement.name = "urls[]";
+    inputElement.type = "hidden";
+    inputElement.value = image.url;
+
+    formElement.appendChild(inputElement)
+
     let divElement = document.createElement("div");
     divElement.style = `width:${image.thumbnail_width*125/image.thumbnail_height}px;flex-grow:${image.thumbnail_width*100/image.thumbnail_height}`
     let iElement = document.createElement("i");
