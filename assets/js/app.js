@@ -11,14 +11,20 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import 'react-phoenix'
 
-import "jquery"
+import 'phoenix_html'
 
+import 'jquery'
 // Import local files
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-import socket from "./socket"
-var myLazyLoad = new LazyLoad();
+import socket from './socket'
+var myLazyLoad = new LazyLoad()
+import HelloWorld from "./components/hello_world"
+
+window.Components = {
+  HelloWorld
+}

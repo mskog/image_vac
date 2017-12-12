@@ -44,7 +44,8 @@ defmodule ImageVac.Mixfile do
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
       {:httpoison, "~> 0.13"},
       {:hashids, "~> 2.0"},
-      {:rollbax, "~> 0.6"}
+      {:rollbax, "~> 0.6"},
+      {:react_phoenix, "~> 0.5.0"}
     ]
   end
 

@@ -40,6 +40,8 @@ defmodule ImageVacWeb do
       import ImageVacWeb.Router.Helpers
       import ImageVacWeb.ErrorHelpers
       import ImageVacWeb.Gettext
+
+      import ReactPhoenix.ClientSide
     end
   end
 
