@@ -16,7 +16,6 @@
         <%= submit "GO", class: "button is-primary" %>
       </p>
     <% end %>
-    <%= react_component("Components.HelloWorld") %>
   </div>
   <p class="has-text-centered">
     <a href="<%= page_path(@conn, :tos) %>">Terms of service</a>
