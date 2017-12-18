@@ -10,18 +10,6 @@
       <button class="button is-info">Download all images</button>
     </form>
 
-    <div id="new_images">
-      <div id="new_images_message">
-        <div class="sk-three-bounce">
-          <div class="sk-child sk-bounce1"></div>
-          <div class="sk-child sk-bounce2"></div>
-          <div class="sk-child sk-bounce3"></div>
-        </div>
-      </div>
-    </div>
-
-    <div id='masonry'>
-      <%= react_component("Components.Images", %{images: @image_urls, vacId: @vac.hash_id}) %>
-    </div>
+    <%= react_component("Components.Images", %{images: @image_urls, vacId: @vac.hash_id}) %>
   </div>
 </div>

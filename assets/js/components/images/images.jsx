@@ -2,30 +2,45 @@ import {Socket} from 'phoenix'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from './grid'
+import Loading from './loading'
 
 class Images extends React.Component {
-  propTypes: {
+  static propTypes = {
     images: PropTypes.array,
-    vacId: PropTypes.number
+    vacId: PropTypes.string,
+    loading: PropTypes.bool
+  }
+
+  static defaultProps = {
+    loading: true
   }
 
   constructor (props) {
-    console.log('constructing')
     super()
     let socket = new Socket('/socket', {params: {token: window.userToken}})
     socket.connect()
     let channel = socket.channel(`vac:images:${props.vacId}`, {})
-    this.state = {channel: channel, images: props.images, ref: null}
+    this.state = {channel: channel, images: props.images, ref: null, loading: props.loading}
     this.state.channel.join()
   }
 
   componentDidMount () {
     const ref = this.state.channel.on('new_images', payload => {
       const newImages = this.state.images.concat(payload.images)
-      this.setState({images: newImages})
+      this.setState({images: newImages, loading: false})
     })
 
     this.setState({ref: ref})
+    this.setLoadingTimeout()
+  }
+
+  // If no new images are received within 5000 milliseconds
+  setLoadingTimeout () {
+    if (this.state.loading === true) {
+      window.setTimeout(() => {
+        this.setState({loading: false})
+      }, 5000)
+    }
   }
 
   componentWillUnmount () {
@@ -33,8 +48,13 @@ class Images extends React.Component {
   }
 
   render () {
+    const loader = this.state.loading === true ? <Loading /> : ''
+
     return (
-      <Grid images={this.state.images} />
+      <div>
+        {loader}
+        <Grid id='masonry' images={this.state.images} />
+      </div>
     )
   }
 }
