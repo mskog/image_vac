@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run watch",
     "watch": "MIX_ENV=dev webpack-dev-server --inline --hot --stdin --colors --public localhost:80 0",
-    "deploy": "MIX_ENV=prod webpack -p"
+    "deploy": "NODE_ENV=production MIX_ENV=prod webpack -p"
   },
   "dependencies": {
     "bulma": "^0.5.2",
