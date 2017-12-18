@@ -42,7 +42,7 @@
 
     <title>ImageVac - <%= title @conn, "View and Save all images from any website" %></title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
-    <%= {:safe, css_link_tag() } %>
+    <%= {:safe, css_link_tag(@conn) } %>
     <%= if Mix.env == :prod do %>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107398119-1"></script>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <%= {:safe, js_script_tag() } %>
+    <%= {:safe, js_script_tag(@conn)} %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/10.3.1/lazyload.min.js"></script>
   </body>
 </html>

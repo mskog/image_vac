@@ -17,17 +17,19 @@ defmodule ImageVacWeb.LayoutView do
     end
   end
 
-  def js_script_tag do
+  def js_script_tag(conn) do
     if Mix.env == :prod do
-      ~s(<script src="/js/app.js"></script>)
+      path = static_path(conn, "/js/app.js")
+      ~s(<script src="#{path}"></script>)
     else
       ~s(<script src="http://localhost:8080/js/app.js"></script>)
     end
   end
 
-  def css_link_tag do
+  def css_link_tag(conn) do
     if Mix.env == :prod do
-      ~s(<link rel="stylesheet" type="text/css" href="/css/app.css" media="screen,projection" />)
+      path = static_path(conn, "/css/app.css")
+      ~s(<link rel="stylesheet" type="text/css" href="#{path}" media="screen,projection" />)
     else
       ""
     end
