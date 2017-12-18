@@ -56,6 +56,7 @@ defmodule ImageVac.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      "webpacker.setup": ["deps.get", "webpacker.frontend", "ecto.create", "run priv/repo/seeds.exs"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       "test": ["ecto.create --quiet", "ecto.migrate", "test"]

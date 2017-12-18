@@ -41,7 +41,8 @@
     <meta name="msapplication-square310x310logo" content="<%= static_path(@conn, "/images/icons/mstile-310x310.png") %>"/>
 
     <title>ImageVac - <%= title @conn, "View and Save all images from any website" %></title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+    <%= {:safe, css_link_tag() } %>
     <%= if Mix.env == :prod do %>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107398119-1"></script>
@@ -72,7 +73,7 @@
       </div>
     </div>
 
-    <script async src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= {:safe, js_script_tag() } %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/10.3.1/lazyload.min.js"></script>
   </body>
 </html>

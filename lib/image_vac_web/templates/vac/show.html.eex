@@ -20,21 +20,8 @@
       </div>
     </div>
 
-    <div id="masonry">
-      <%= for image_url <- @image_urls do %>
-        <div style="width:<%= image_url.thumbnail_width*125/image_url.thumbnail_height%>px;flex-grow:<%=image_url.thumbnail_width*200/image_url.thumbnail_height %>">
-          <a href="<%= image_url.url %>" target="_blank">
-            <i style="padding-bottom:<%=image_url.thumbnail_height/image_url.thumbnail_width*100%>%"></i>
-            <img data-src="<%= image_url.thumbnail_url %>" />
-          </a>
-        </div>
-      <% end %>
+    <div id='masonry'>
+      <%= react_component("Components.Images", %{images: @image_urls, vacId: @vac.hash_id}) %>
     </div>
   </div>
 </div>
-
-<script>
-  setTimeout(function() {
-    $("#new_images_message").empty();
-  }, 5000);
-</script>
