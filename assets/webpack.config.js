@@ -7,12 +7,11 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
-
 /*
  * Configuration
  **/
 module.exports = (env) => {
-  const isDev = !(env && env.prod);
+  const isDev = !(process.env.NODE_ENV === 'production');
   const devtool = isDev ? "eval" : "source-map";
 
   return {
