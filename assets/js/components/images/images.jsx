@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from './grid'
 import Loading from './loading'
+import DownloadForm from './download_form'
 
 class Images extends React.Component {
   static propTypes = {
@@ -53,6 +54,7 @@ class Images extends React.Component {
     return (
       <div>
         {loader}
+        <DownloadForm images={this.state.images} />
         <Grid id='masonry' images={this.state.images} />
       </div>
     )

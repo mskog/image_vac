@@ -2,14 +2,6 @@
   <h1 class="title"><%= @vac.url %></h1>
   <div class="box">
     <input id="vac_id" type="hidden" value="<%= @vac.hash_id %>" />
-
-    <form method="post" action="https://boxer.mskog.com" id="download_form">
-      <%= for image_url <- @image_urls do %>
-        <input type="hidden" name="urls[]" value="<%= image_url.url %>" />
-      <% end %>
-      <button class="button is-info">Download all images</button>
-    </form>
-
     <%= react_component("Components.Images", %{images: @image_urls, vacId: @vac.hash_id}) %>
   </div>
 </div>
