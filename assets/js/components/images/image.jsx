@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class Image extends React.Component {
-  propTypes: {
+  static propTypes = {
     url: PropTypes.string,
     thumbnail_width: PropTypes.number,
     thumbnail_height: PropTypes.number,
