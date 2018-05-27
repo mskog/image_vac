@@ -8,7 +8,7 @@ use Mix.Config
 # General application configuration
 config :image_vac,
   ecto_repos: [ImageVac.Repo],
-  thumbs_url: "https://thumbs.picyo.me"
+  thumbs_url: "https://thumbs.mskog.com"
 
 # Configures the endpoint
 config :image_vac, ImageVacWeb.Endpoint,
