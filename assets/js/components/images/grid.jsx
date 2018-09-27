@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import Image from './image'
 
 class Grid extends React.Component {
-  propTypes: {
-    images: PropTypes.array,
+  static propTypes = {
+    images: PropTypes.array
   }
 
   render () {

@@ -5,10 +5,10 @@ defmodule ImageVac.Mixfile do
     [
       app: :image_vac,
       version: "0.0.1",
-      elixir: "~> 1.6.3",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixir: "~> 1.7.2",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -26,7 +26,7 @@ defmodule ImageVac.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -57,10 +57,15 @@ defmodule ImageVac.Mixfile do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "webpacker.setup": ["deps.get", "webpacker.frontend", "ecto.create", "run priv/repo/seeds.exs"],
+      "webpacker.setup": [
+        "deps.get",
+        "webpacker.frontend",
+        "ecto.create",
+        "run priv/repo/seeds.exs"
+      ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end

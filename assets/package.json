@@ -37,5 +37,8 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.4.0",
     "webpack-dev-server": "^2.6.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

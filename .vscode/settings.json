@@ -4,6 +4,7 @@
     ".elixir_ls": true,
     ".vscode": true,
     "deps": true,
-    "assets/node_modules": true
+    "assets/node_modules": true,
+    "_build": true
   }
 }

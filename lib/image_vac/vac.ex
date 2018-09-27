@@ -4,9 +4,9 @@ defmodule ImageVac.Vac do
   alias ImageVac.Vac
 
   schema "vacs" do
-    has_many :images, ImageVac.Image
-    field :hash_id, :string
-    field :url, :string
+    has_many(:images, ImageVac.Image)
+    field(:hash_id, :string)
+    field(:url, :string)
     timestamps()
   end
 
@@ -20,15 +20,17 @@ defmodule ImageVac.Vac do
 
   defp validate_url_format(changeset) do
     url = get_field(changeset, :url)
+
     case validate_url(url) do
       {:ok, _} ->
         changeset
+
       {:error, _} ->
         add_error(changeset, :url, "invalid")
     end
   end
 
-  defp validate_url(url = nil) do
+  defp validate_url(nil = url) do
     {:ok, url}
   end
 
